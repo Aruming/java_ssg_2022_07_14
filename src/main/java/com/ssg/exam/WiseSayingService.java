@@ -1,6 +1,5 @@
 package com.ssg.exam;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingService {
@@ -18,8 +17,8 @@ public class WiseSayingService {
         return wiseSayingRepository.add(content, author);
     }
 
-    public WiseSaying findById(int paramId) {
-        return wiseSayingRepository.findById(paramId);
+    public WiseSaying findById(int id) {
+        return wiseSayingRepository.findById(id);
     }
 
     public boolean remove(int id) {

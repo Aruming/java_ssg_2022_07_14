@@ -27,16 +27,16 @@ public class WiseSayingController {
     }
 
     public void modify(Rq rq) {
-        int paramId2 = rq.getIntParam("id", 0);
-        if(paramId2==0){
+        int id = rq.getIntParam("id", 0);
+        if(id==0){
             System.out.println("id를 입력해주세요.");
             return;
         }
 
-        WiseSaying wiseSaying = wiseSayingService.findById(paramId2);
+        WiseSaying wiseSaying = wiseSayingService.findById(id);
 
         if(wiseSaying==null){
-            System.out.printf("%d번 명언은 존재하지 않습니다.\n", paramId2);
+            System.out.printf("%d번 명언은 존재하지 않습니다.\n", id);
             return;
         }
 
@@ -47,26 +47,26 @@ public class WiseSayingController {
         System.out.printf("작가 : ");
         String author = sc.nextLine();
 
-        wiseSayingService.modify(paramId2, content, author);
+        wiseSayingService.modify(id, content, author);
     }
 
     public void remove(Rq rq) {
-        int paramId = rq.getIntParam("id", 0);
+        int id = rq.getIntParam("id", 0);
 
-        if(paramId==0){
+        if(id==0){
             System.out.println("id를 입력해주세요.");
             return;
         }
 
-        WiseSaying wiseSaying = wiseSayingService.findById(paramId);
+        WiseSaying wiseSaying = wiseSayingService.findById(id);
 
         if(wiseSaying==null){
-            System.out.printf("%d번 명언은 존재하지 않습니다.\n", paramId);
+            System.out.printf("%d번 명언은 존재하지 않습니다.\n", id);
             return;
         }
 
-        wiseSayingService.remove(paramId);
-        System.out.printf("%d번 명언이 삭제되었습니다.\n", paramId);
+        wiseSayingService.remove(id);
+        System.out.printf("%d번 명언이 삭제되었습니다.\n", id);
     }
 
     public void add(Rq rq) {
