@@ -23,7 +23,7 @@ public class App {
 
             switch (rq.getPath()){
                 case "등록":
-                    wiseSayingController.write(rq);
+                    wiseSayingController.add(rq);
                     break;
 
                 case "삭제":

@@ -69,7 +69,7 @@ public class WiseSayingController {
         System.out.printf("%d번 명언이 삭제되었습니다.\n", paramId);
     }
 
-    public void write(Rq rq) {
+    public void add(Rq rq) {
         System.out.print("명언 : ");
         String content = sc.nextLine();
         System.out.print("작가 : ");

@@ -4,58 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WiseSayingService {
-    private int wiseSayingLastId;
-    private List<WiseSaying> wiseSayings;
-
+    WiseSayingRepository wiseSayingRepository;
     WiseSayingService(){
-        wiseSayingLastId = 0;
-        wiseSayings = new ArrayList<>();
+        wiseSayingRepository = new WiseSayingRepository();
     }
 
     public List<WiseSaying> findAll() {
-        return wiseSayings;
+        return wiseSayingRepository.findAll();
     }
 
 
     public WiseSaying write(String content, String author) {
-        int id = ++wiseSayingLastId;
-
-        WiseSaying wiseSaying = new WiseSaying(id, content, author);
-        wiseSayings.add(wiseSaying);
-        
-        return wiseSaying;
+        return wiseSayingRepository.add(content, author);
     }
 
     public WiseSaying findById(int paramId) {
-        for(WiseSaying wiseSaying : wiseSayings){
-            if(wiseSaying.id==paramId)
-                return wiseSaying;
-        }
-        return null;
+        return wiseSayingRepository.findById(paramId);
     }
 
     public boolean remove(int id) {
-        WiseSaying wiseSaying = findById(id);
-
-        if (wiseSaying == null) {
-            return false;
-        }
-
-        wiseSayings.remove(wiseSaying);
-
-        return true;
+        return wiseSayingRepository.remove(id);
     }
 
     public boolean modify(int id, String content, String author) {
-        WiseSaying wiseSaying = findById(id);
-
-        if (wiseSaying == null) {
-            return false;
-        }
-
-        wiseSaying.content = content;
-        wiseSaying.author = author;
-
-        return true;
+        return wiseSayingRepository.modify(id, content, author);
     }
 }
