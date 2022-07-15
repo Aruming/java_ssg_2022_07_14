@@ -58,6 +58,28 @@ public class App {
 
                     break;
 
+                case "수정":
+                    int paramId2 = rq.getIntParam("id", 0);
+                    if(paramId2==0){
+                        System.out.println("id를 입력해주세요.");
+                        continue ;
+                    }
+
+                    WiseSaying wiseSaying4 = findByID(paramId2);
+
+                    if(wiseSaying4==null){
+                        System.out.printf("%d번 명언은 존재하지 않습니다.\n", paramId2);
+                        continue ;
+                    }
+
+                    System.out.printf("기존 명언 : %s\n", wiseSaying4.content);
+                    System.out.printf("명언 : ");
+                    wiseSaying4.content = sc.nextLine();
+                    System.out.printf("기존 작가 : %s\n", wiseSaying4.author);
+                    System.out.printf("작가 : ");
+                    wiseSaying4.author = sc.nextLine();
+                    break;
+
                 case "목록":
                     System.out.println("번호 / 작가 / 명언");
                     System.out.println("----------------------");
